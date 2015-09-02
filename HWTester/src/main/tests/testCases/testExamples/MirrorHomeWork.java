@@ -2,7 +2,7 @@ package testCases.testExamples;
 
 import base.CaseConfig;
 import base.TestException;
-import testCases.HttpHelper;
+import testCases.http.HttpHelper;
 import testCases.TestCase;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class MirrorHomeWork implements TestCase {
         try {
             String value = cfg.getArgs()[0];
             String url = "http://" + cfg.getHost() + ":" + cfg.getPort() + "/" + "mirror?key=" + value;
-            String pageBody = HttpHelper.sendGet(url);
+            String pageBody = HttpHelper.sendGet(url).getPage();
             return pageBody.equals(value);
         } catch (IOException e) {
             throw new TestException(e);
