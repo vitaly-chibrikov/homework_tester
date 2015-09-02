@@ -1,22 +1,25 @@
 package testCases.testExamples;
 
 import base.CaseConfig;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import base.TestException;
+import testCases.HttpHelper;
 import testCases.TestCase;
+
+import java.io.IOException;
 
 /**
  * @author v.chibrikov
  */
 @SuppressWarnings("UnusedDeclaration")
 public class MirrorHomeWork implements TestCase {
-    public boolean test(WebDriver driver, CaseConfig cfg) {
-        String value = cfg.getArgs()[0];
-        String URL = "http://" + cfg.getHost() + ":" + cfg.getPort() + "/";
-        driver.get(URL + "mirror?key=" + value);
-        WebElement element = driver.findElement(By.tagName("body"));
-        String pageBody = element.getText();
-        return pageBody.equals(value);
+    public boolean test(CaseConfig cfg) {
+        try {
+            String value = cfg.getArgs()[0];
+            String url = "http://" + cfg.getHost() + ":" + cfg.getPort() + "/" + "mirror?key=" + value;
+            String pageBody = HttpHelper.sendGet(url);
+            return pageBody.equals(value);
+        } catch (IOException e) {
+            throw new TestException(e);
+        }
     }
 }

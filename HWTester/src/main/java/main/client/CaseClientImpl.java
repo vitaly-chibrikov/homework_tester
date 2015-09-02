@@ -3,8 +3,6 @@ package main.client;
 import base.CaseClient;
 import base.CaseConfig;
 import base.TestException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import testCases.TestCase;
 
 /**
@@ -19,9 +17,7 @@ public class CaseClientImpl implements CaseClient {
 
     @Override
     public boolean test() {
-        WebDriver driver = new HtmlUnitDriver();
-        boolean result = createTestCase(cfg.getCaseClass()).test(driver, cfg);
-        driver.quit();
+        boolean result = createTestCase(cfg.getCaseClass()).test(cfg);
         return result;
     }
 

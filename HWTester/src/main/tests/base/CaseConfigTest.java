@@ -19,7 +19,7 @@ public class CaseConfigTest {
         CaseConfig cfg = new CaseConfig("src/main/tests/test.properties");
         Assert.assertEquals("8080", cfg.getPort());
         Assert.assertEquals("localhost", cfg.getHost());
-        Assert.assertEquals("testCases.stepic.HW1", cfg.getCaseClass());
+        Assert.assertEquals("testCases.stepic.HW01", cfg.getCaseClass());
         Assert.assertEquals(1000, cfg.getStartWaitPeriod());
         Assert.assertEquals("java -jar server.jar", cfg.getServerStartCommand());
         Assert.assertEquals("Server started", cfg.getStartedMessage());

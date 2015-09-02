@@ -9,7 +9,7 @@
     <version>0.2</version>
 
     <properties>
-        <org.seleniumhq.selenium.version>2.47.1</org.seleniumhq.selenium.version>
+        <org.apache.httpcomponents.version>4.5</org.apache.httpcomponents.version>
         <org.mockito.version>1.8.4</org.mockito.version>
         <junit.version>4.11</junit.version>
     </properties>
@@ -37,9 +37,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${org.seleniumhq.selenium.version}</version>
+        	<groupId>org.apache.httpcomponents</groupId>
+        	<artifactId>httpclient</artifactId>
+        	<version>${org.apache.httpcomponents.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
