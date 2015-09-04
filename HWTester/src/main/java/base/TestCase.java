@@ -1,4 +1,4 @@
-package testCases;
+package base;
 
 import base.CaseConfig;
 

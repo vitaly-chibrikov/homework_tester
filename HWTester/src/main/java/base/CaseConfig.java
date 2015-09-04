@@ -13,6 +13,7 @@ public class CaseConfig {
     private final String port;
     private final String serverStartCommand;
     private final int startWaitPeriod;
+    private final int stopWaitPeriod;
     private final String caseClass;
     private final String[] args;
     private final String startedMessage;
@@ -24,6 +25,7 @@ public class CaseConfig {
         this.port = getNotNull(properties, "port", cfgName);
         this.serverStartCommand = getNotNull(properties, "serverStartCommand", cfgName);
         this.startWaitPeriod = Integer.parseInt(getNotNull(properties, "startWaitPeriod", cfgName));
+        this.stopWaitPeriod = Integer.parseInt(getNotNull(properties, "stopWaitPeriod", cfgName));
         this.caseClass = getNotNull(properties, "caseClass", cfgName);
         this.startedMessage = getNotNull(properties, "startedMessage", cfgName);
         this.args = args;
@@ -56,6 +58,10 @@ public class CaseConfig {
 
     public int getStartWaitPeriod() {
         return startWaitPeriod;
+    }
+
+    public int getStopWaitPeriod() {
+        return stopWaitPeriod;
     }
 
     public String getCaseClass() {

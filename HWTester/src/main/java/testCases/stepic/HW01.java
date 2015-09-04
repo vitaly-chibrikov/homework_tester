@@ -2,7 +2,7 @@ package testCases.stepic;
 
 import base.CaseConfig;
 import base.TestException;
-import testCases.TestCase;
+import base.TestCase;
 import testCases.http.HttpHelper;
 
 import java.io.IOException;

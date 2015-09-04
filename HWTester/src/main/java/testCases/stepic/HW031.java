@@ -1,10 +1,10 @@
 package testCases.stepic;
 
 import base.CaseConfig;
+import base.TestCase;
 import base.TestException;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import base.TestCase;
 import testCases.http.HttpAnswer;
 import testCases.http.HttpHelper;
 
@@ -15,31 +15,20 @@ import java.util.List;
 /**
  * @author v.chibrikov
  */
-public class HW02 implements TestCase {
+public class HW031 implements TestCase {
     public boolean test(CaseConfig cfg) {
         try {
             List<NameValuePair> urlParameters = new ArrayList<>();
-            urlParameters.add(new BasicNameValuePair("login", "userName"));
-            urlParameters.add(new BasicNameValuePair("password", "userPassword"));
+            String login = "userName";
+            String password = "userPassword";
+            urlParameters.add(new BasicNameValuePair("login", login));
+            urlParameters.add(new BasicNameValuePair("password", password));
 
             String signUpURL = "http://" + cfg.getHost() + ":" + cfg.getPort() + "/signup";
             HttpAnswer signUpAnswer = HttpHelper.sendPost(signUpURL, urlParameters);
             int signUpCode = signUpAnswer.getCode();
             if (signUpCode != 200) {
                 System.out.println("Can't sign up. Response code: " + signUpCode);
-                return false;
-            }
-
-            String signInURL = "http://" + cfg.getHost() + ":" + cfg.getPort() + "/signin";
-            HttpAnswer signInAnswer = HttpHelper.sendPost(signInURL, urlParameters);
-            int signInCode = signInAnswer.getCode();
-            String page = signInAnswer.getPage();
-            if (signInCode != 200) {
-                System.out.println("Can't sign in. Response code: " + signInCode + " page: " + page);
-                return false;
-            }
-            if (!page.contains("Authorized")) {
-                System.out.println("Can't sign in. Response code: " + signInCode + " page: " + page);
                 return false;
             }
 

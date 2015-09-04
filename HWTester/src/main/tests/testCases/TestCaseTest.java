@@ -1,12 +1,13 @@
-package main.client;
+package testCases;
 
-import base.CaseClient;
 import base.CaseConfig;
 import base.CaseServer;
 import main.CaseProcessor;
 import main.server.CaseServerImpl;
 import org.junit.Assert;
 import org.junit.Test;
+import base.TestCase;
+import base.TestCasesFactory;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -14,7 +15,7 @@ import static org.mockito.Mockito.when;
 /**
  * @author v.chibrikov
  */
-public class CaseClientTest {
+public class TestCaseTest {
     @Test
     public void mirrorWebServerTest() {
         CaseConfig cfg = mock(CaseConfig.class);
@@ -26,10 +27,10 @@ public class CaseClientTest {
         when(cfg.getCaseClass()).thenReturn("testCases.testExamples.MirrorHomeWork");
         when(cfg.getArgs()).thenReturn(new String[]{"hello"});
 
-        CaseClient caseClient = new CaseClientImpl(cfg);
+        TestCase[] testCases = TestCasesFactory.createTestCases(cfg);
         CaseServer caseServer = new CaseServerImpl(cfg);
 
-        CaseProcessor caseProcessor = new CaseProcessor(caseServer, caseClient);
+        CaseProcessor caseProcessor = new CaseProcessor(cfg, caseServer, testCases);
         boolean result = caseProcessor.process();
 
         Assert.assertTrue(result);

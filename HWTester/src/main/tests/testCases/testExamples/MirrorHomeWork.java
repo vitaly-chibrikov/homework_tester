@@ -3,7 +3,7 @@ package testCases.testExamples;
 import base.CaseConfig;
 import base.TestException;
 import testCases.http.HttpHelper;
-import testCases.TestCase;
+import base.TestCase;
 
 import java.io.IOException;
 
