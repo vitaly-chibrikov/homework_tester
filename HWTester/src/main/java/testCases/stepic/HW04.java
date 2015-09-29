@@ -3,7 +3,7 @@ package testCases.stepic;
 import base.CaseConfig;
 import base.TestCase;
 import base.TestException;
-import testCases.sockets.WebsocketClient;
+import testCases.websockets.WebsocketClient;
 
 import java.net.URI;
 import java.net.URISyntaxException;
