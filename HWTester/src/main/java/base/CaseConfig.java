@@ -18,6 +18,8 @@ public class CaseConfig {
     private final String[] args;
     private final String startedMessage;
 
+    private String interCasesData;
+
 
     public CaseConfig(String cfgName, String[] args) {
         Properties properties = getProperties(cfgName);
@@ -42,6 +44,14 @@ public class CaseConfig {
         if (value == null)
             throw new TestException("Can't get " + name + " from config " + cfgName);
         return value;
+    }
+
+    public String getInterCasesData() {
+        return interCasesData;
+    }
+
+    public void setInterCasesData(String interCasesData) {
+        this.interCasesData = interCasesData;
     }
 
     public String getHost() {

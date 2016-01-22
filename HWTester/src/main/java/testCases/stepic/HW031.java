@@ -10,16 +10,19 @@ import testCases.http.HttpHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
  * @author v.chibrikov
  */
 public class HW031 implements TestCase {
+
     public boolean test(CaseConfig cfg) {
         try {
             List<NameValuePair> urlParameters = new ArrayList<>();
-            String login = "userName";
+            String login = "userName" + (new Date().getTime());
+            cfg.setInterCasesData(login);
             String password = "userPassword";
             urlParameters.add(new BasicNameValuePair("login", login));
             urlParameters.add(new BasicNameValuePair("password", password));

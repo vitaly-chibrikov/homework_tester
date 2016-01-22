@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class CaseServerImpl implements CaseServer {
     private static final int TICK = 10;
     private final StringBuffer out = new StringBuffer();
-    private AtomicBoolean serverStarted = new AtomicBoolean(false);
+    private final AtomicBoolean serverStarted = new AtomicBoolean(false);
     private final CaseConfig cfg;
     private Process process;
 
@@ -72,8 +72,8 @@ public class CaseServerImpl implements CaseServer {
     }
 
     private class StreamGobbler extends Thread {
-        private InputStream is;
-        private String type;
+        private final InputStream is;
+        private final String type;
 
         private StreamGobbler(InputStream is, String type) {
             this.is = is;

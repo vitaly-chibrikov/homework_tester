@@ -1,15 +1,16 @@
 package testCases.stepic;
 
 import base.CaseConfig;
+import base.TestCase;
 import base.TestException;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import base.TestCase;
 import testCases.http.HttpAnswer;
 import testCases.http.HttpHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,8 +19,9 @@ import java.util.List;
 public class HW02 implements TestCase {
     public boolean test(CaseConfig cfg) {
         try {
+            String login = "login" + (new Date().getTime());
             List<NameValuePair> urlParameters = new ArrayList<>();
-            urlParameters.add(new BasicNameValuePair("login", "userName"));
+            urlParameters.add(new BasicNameValuePair("login", login));
             urlParameters.add(new BasicNameValuePair("password", "userPassword"));
 
             String signUpURL = "http://" + cfg.getHost() + ":" + cfg.getPort() + "/signup";
@@ -38,7 +40,7 @@ public class HW02 implements TestCase {
                 System.out.println("Can't sign in. Response code: " + signInCode + " page: " + page);
                 return false;
             }
-            if (!page.contains("Authorized")) {
+            if (!page.contains("Authorized: " + login)) {
                 System.out.println("Can't sign in. Response code: " + signInCode + " page: " + page);
                 return false;
             }

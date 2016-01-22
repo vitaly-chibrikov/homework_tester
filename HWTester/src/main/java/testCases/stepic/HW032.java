@@ -19,7 +19,7 @@ public class HW032 implements TestCase {
     public boolean test(CaseConfig cfg) {
         try {
             List<NameValuePair> urlParameters = new ArrayList<>();
-            String login = "userName";
+            String login = cfg.getInterCasesData();
             String password = "userPassword";
             urlParameters.add(new BasicNameValuePair("login", login));
             urlParameters.add(new BasicNameValuePair("password", password));
@@ -32,7 +32,7 @@ public class HW032 implements TestCase {
                 System.out.println("Can't sign in. Response code: " + signInCode + " page: " + page);
                 return false;
             }
-            if (!page.contains("Authorized")) {
+            if (!page.contains("Authorized: " + login)) {
                 System.out.println("Can't sign in. Response code: " + signInCode + " page: " + page);
                 return false;
             }

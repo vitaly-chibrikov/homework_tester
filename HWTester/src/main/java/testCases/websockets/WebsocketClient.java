@@ -7,9 +7,10 @@ import java.net.URI;
 /**
  * @author v.chibrikov
  */
+@SuppressWarnings({"UnusedParameters", "UnusedDeclaration"})
 @ClientEndpoint
 public class WebsocketClient {
-    Session userSession = null;
+    private Session userSession = null;
     private MessageHandler messageHandler;
 
     public WebsocketClient(URI endpointURI) {
