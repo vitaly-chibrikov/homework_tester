@@ -43,6 +43,7 @@ public class CaseProcessor {
                 Thread.sleep(cfg.getStopWaitPeriod());
             } catch (TestException | InterruptedException e) {
                 System.out.println(e.getMessage());
+                return false; //если caseServer выбросит исключение - то метод process всегда будет возвращать true
             } finally {
                 caseServer.stop();
             }
